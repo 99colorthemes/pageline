@@ -104,4 +104,11 @@ jQuery(document).ready(function () {
     scrollEasing: "easeOutQuad"
   });
 });
+
+//************************ counterup animation ***********************************//
+jQuery(document).ready(function () {
+  if ( typeof jQuery.fn.counterUp !== 'undefined' ) {
+    jQuery('.counter').counterUp();
+  }
+});
  

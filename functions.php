@@ -141,6 +141,9 @@ endif;
  * Enqueue scripts and styles.
  */
 function pageline_scripts() {
+
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
 	// use of enqueued google fonts
 	wp_enqueue_style( 'pageline-google-fonts', pageline_fonts_url(), array(), null );
 	
@@ -168,6 +171,10 @@ function pageline_scripts() {
 	wp_enqueue_script( 'jquery-scrollSpeed', get_template_directory_uri() . '/js/jquery.scrollSpeed.js', array( 'jquery' ), '1.0.2', true );
 	// Register owl.carousel Script
 	wp_enqueue_script( 'jquery-owl-carousel', get_template_directory_uri() . '/js/owl.carousel.js', array( 'jquery' ), '2.0.0', true );
+	// Waypoints Script
+   wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/waypoints' . $suffix . '.js', array( 'jquery' ), '2.0.3', true );
+   // CounterUp Script
+   wp_enqueue_script( 'counterup', get_template_directory_uri() . '/js/jquery.counterup' . $suffix . '.js', array( 'jquery' ), false, true );
 	// Register pageline main Script
 	wp_enqueue_script( 'pageline-main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '1.0.0', true );
 

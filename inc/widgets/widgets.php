@@ -485,7 +485,7 @@ class pageline_project_widget extends WP_Widget {
       <input id="<?php echo $this->get_field_id( 'btn-url' ); ?>" class="widefat" name="<?php echo $this->get_field_name( 'btn-url' ); ?>" type="text" value="<?php echo esc_url( $btn_url ); ?>" size="3" />
     </p>
 
-    <p><?php esc_html_e( 'Info: To display project from specific category, select the Category in above radio option than select the category from the drop-down list.', 'pageline' ); ?></p>
+    <p><?php esc_html_e( 'Info: To display project from specific category, select the category from the drop-down list.', 'pageline' ); ?></p>
   <?php
   }// end of form function.
 
@@ -1259,13 +1259,23 @@ class pageline_contact_widget extends WP_Widget {
     $defaults[ 'menu_id' ] = '';
     $defaults[ 'title' ] = '';
     $defaults[ 'text' ]  = '';
-    $defaults[ 'page' ]  = '';
+    $defaults[ 'phone_icon' ]  = '';
+    $defaults[ 'phone_info' ]  = '';
+    $defaults[ 'email_icon' ]  = '';
+    $defaults[ 'email_info' ]  = '';
+    $defaults[ 'address_icon' ]  = '';
+    $defaults[ 'address_info' ]  = '';
     $defaults[ 'shortcode' ]  = '';
     $instance            = wp_parse_args( (array) $instance, $defaults );
     $menu_id             = $instance[ 'menu_id' ];
     $title               = $instance[ 'title' ];
     $text                = $instance[ 'text' ];
-    $page                = $instance[ 'page' ];
+    $phone_icon          = $instance[ 'phone_icon' ];
+    $phone_info        = $instance[ 'phone_info' ];
+    $email_icon          = $instance[ 'email_icon' ];
+    $email_info        = $instance[ 'email_info' ];
+    $address_icon          = $instance[ 'address_icon' ];
+    $address_info        = $instance[ 'address_info' ];
     $shortcode           = $instance[ 'shortcode' ];
     ?>
     <p><?php esc_html_e( 'Note: Enter the Section ID and use same for Menu item. Only used for One Page Menu.', 'pageline' ); ?>
@@ -1282,14 +1292,28 @@ class pageline_contact_widget extends WP_Widget {
     <?php esc_html_e( 'Description','pageline' ); ?>
     <textarea class="widefat" rows="10" cols="20" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo esc_textarea( $text ); ?></textarea>
     <p>
-      <label for="<?php echo $this->get_field_id( 'page' ); ?>"><?php esc_html_e( 'Page', 'pageline' ); ?>:</label>
-      <?php wp_dropdown_pages( array(
-        'class'             => 'widefat',
-        'name'              => $this->get_field_name( 'page' ),
-        'selected'          => $page
-        )
-      )
-      ?>
+      <label for="<?php echo $this->get_field_id('phone_icon'); ?>"><?php esc_html_e( 'Icon Class:', 'pageline' ); ?></label>
+      <input id="<?php echo $this->get_field_id('phone_icon'); ?>" class="widefat" name="<?php echo $this->get_field_name('phone_icon'); ?>" type="text" value="<?php echo esc_attr( $phone_icon ); ?>" placeholder="fa-coffee"/>
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id('phone_info'); ?>"><?php esc_html_e( 'Contact Number:', 'pageline' ); ?></label>
+      <input id="<?php echo $this->get_field_id('phone_info'); ?>" class="widefat" name="<?php echo $this->get_field_name('phone_info'); ?>" type="text" value="<?php echo esc_attr( $phone_info ); ?>" />
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id('email_icon'); ?>"><?php esc_html_e( 'Icon Class:', 'pageline' ); ?></label>
+      <input id="<?php echo $this->get_field_id('email_icon'); ?>" class="widefat" name="<?php echo $this->get_field_name('email_icon'); ?>" type="text" value="<?php echo esc_attr( $email_icon ); ?>" placeholder="fa-coffee"/>
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id('email_info'); ?>"><?php esc_html_e( 'Email Address:', 'pageline' ); ?></label>
+      <input id="<?php echo $this->get_field_id('email_info'); ?>" class="widefat" name="<?php echo $this->get_field_name('email_info'); ?>" type="text" value="<?php echo esc_url( $email_info ); ?>" />
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id('address_icon'); ?>"><?php esc_html_e( 'Icon Class:', 'pageline' ); ?></label>
+      <input id="<?php echo $this->get_field_id('address_icon'); ?>" class="widefat" name="<?php echo $this->get_field_name('address_icon'); ?>" type="text" value="<?php echo esc_attr( $address_icon ); ?>" placeholder="fa-coffee"/>
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id('address_info'); ?>"><?php esc_html_e( 'Address Details:', 'pageline' ); ?></label>
+      <input id="<?php echo $this->get_field_id('address_info'); ?>" class="widefat" name="<?php echo $this->get_field_name('address_info'); ?>" type="text" value="<?php echo esc_attr( $address_info ); ?>" />
     </p>
     <p>
       <?php
@@ -1309,7 +1333,12 @@ class pageline_contact_widget extends WP_Widget {
     $instance                 = $old_instance; 
     $instance[ 'menu_id' ]      = sanitize_text_field( $new_instance[ 'menu_id' ] );
     $instance[ 'title' ]      = sanitize_text_field( $new_instance[ 'title' ] );
-    $instance[ 'page' ]       = absint( $new_instance[ 'page' ] );
+    $instance[ 'phone_icon' ]      = sanitize_text_field( $new_instance[ 'phone_icon' ] );
+    $instance[ 'phone_info' ]      = sanitize_text_field( $new_instance[ 'phone_info' ] );
+    $instance[ 'email_icon' ]      = sanitize_text_field( $new_instance[ 'email_icon' ] );
+    $instance[ 'email_info' ]      = esc_url_raw( $new_instance[ 'email_info' ] );
+    $instance[ 'address_icon' ]      = sanitize_text_field( $new_instance[ 'address_icon' ] );
+    $instance[ 'address_info' ]      = sanitize_text_field( $new_instance[ 'address_info' ] );
     $instance[ 'shortcode' ]      = strip_tags( $new_instance[ 'shortcode' ] );
 
     if ( current_user_can('unfiltered_html') )
@@ -1328,14 +1357,13 @@ class pageline_contact_widget extends WP_Widget {
     $menu_id                    = isset( $instance[ 'menu_id' ] ) ? $instance[ 'menu_id' ] : '';
     $title                    = apply_filters( 'widget_title', isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : '');
     $text                     = apply_filters( 'widget_text', empty( $instance['text' ] ) ? '' : $instance[ 'text' ], $instance );
-    $page                     = isset( $instance[ 'page' ] ) ? $instance[ 'page' ] : '';
+    $phone_icon                    = isset( $instance[ 'phone_icon' ] ) ? $instance[ 'phone_icon' ] : '';
+    $phone_info                    = isset( $instance[ 'phone_info' ] ) ? $instance[ 'phone_info' ] : '';
+    $email_icon                    = isset( $instance[ 'email_icon' ] ) ? $instance[ 'email_icon' ] : '';
+    $email_info                    = isset( $instance[ 'email_info' ] ) ? $instance[ 'email_info' ] : '';
+    $address_icon                    = isset( $instance[ 'address_icon' ] ) ? $instance[ 'address_icon' ] : '';
+    $address_info                    = isset( $instance[ 'address_info' ] ) ? $instance[ 'address_info' ] : '';
     $shortcode                    = isset( $instance[ 'shortcode' ] ) ? $instance[ 'shortcode' ] : '';
-
-    $get_pages = new WP_Query( array(
-       'posts_per_page'     => 1,
-       'post_type'          =>  array( 'page' ),
-       'page_id'           => $page
-    ) );
     ?>
 
     <?php echo $before_widget; ?>
@@ -1355,25 +1383,36 @@ class pageline_contact_widget extends WP_Widget {
         </div>
       <?php endif; ?>
 
-      <?php if ( !empty( $page ) ) : ?>
-        <div class="nnc-about-content">
-        <?php while ( $get_pages->have_posts() ) : $get_pages->the_post(); ?>
-          <?php if ( has_post_thumbnail() ) : ?>
-            <div class="nnc-about-img">
-              <?php the_post_thumbnail( 'pageline-about' ); ?>
+      
+      <div class="nnc-contact-content">
+        <div class="nnc-contact-info">
+          <?php if ( !empty( $phone_info ) ) : ?>
+            <div class="nnc-info-one-third">
+              <i class="fa <?php echo esc_attr( $phone_icon ); ?>" aria-hidden="true"></i>
+              <span><?php echo esc_html( $phone_info ); ?></span>
             </div>
           <?php endif; ?>
-          <div class="nnc-about-desc">
-            <h4><?php the_title(); ?></h4>
-            <?php the_content(); ?>
-            <span class="nnc-shortcode"><?php echo esc_attr( $shortcode ); ?></span>
-          </div>
-          
-        <?php endwhile; ?>
-        <?php wp_reset_postdata(); ?>
+
+          <?php if ( !empty( $email_info ) ) : ?>
+            <div class="nnc-info-one-third">
+              <i class="fa <?php echo esc_attr( $email_icon ); ?>" aria-hidden="true"></i>
+              <span><?php echo esc_url( $email_info ); ?></span>
+            </div>
+          <?php endif; ?>
+
+          <?php if ( !empty( $address_info ) ) : ?>
+            <div class="nnc-info-one-third">
+              <i class="fa <?php echo esc_attr( $address_icon ); ?>" aria-hidden="true"></i>
+              <span><?php echo esc_html( $address_info ); ?></span>
+            </div>
+          <?php endif; ?>
         </div>
-      <?php endif; ?>
-        
+        <?php if ( !empty( $shortcode ) ) : ?>
+          <div class="nnc-contact-shortcode">
+            <?php echo do_shortcode( $shortcode ); ?>
+          </div>
+        <?php endif; ?>
+      </div>
       </div>
     </div>
     <!-- About-end -->
