@@ -1387,28 +1387,28 @@ class pageline_contact_widget extends WP_Widget {
       <div class="nnc-contact-content">
         <div class="nnc-contact-info">
           <?php if ( !empty( $phone_info ) ) : ?>
-            <div class="nnc-info-one-third">
+            <div class="nnc-col-one-third">
               <i class="fa <?php echo esc_attr( $phone_icon ); ?>" aria-hidden="true"></i>
               <span><?php echo esc_html( $phone_info ); ?></span>
             </div>
           <?php endif; ?>
 
           <?php if ( !empty( $email_info ) ) : ?>
-            <div class="nnc-info-one-third">
+            <div class="nnc-col-one-third">
               <i class="fa <?php echo esc_attr( $email_icon ); ?>" aria-hidden="true"></i>
               <span><?php echo esc_url( $email_info ); ?></span>
             </div>
           <?php endif; ?>
 
           <?php if ( !empty( $address_info ) ) : ?>
-            <div class="nnc-info-one-third">
+            <div class="nnc-col-one-third">
               <i class="fa <?php echo esc_attr( $address_icon ); ?>" aria-hidden="true"></i>
               <span><?php echo esc_html( $address_info ); ?></span>
             </div>
           <?php endif; ?>
         </div>
         <?php if ( !empty( $shortcode ) ) : ?>
-          <div class="nnc-contact-shortcode">
+          <div class="nnc-contact-filds">
             <?php echo do_shortcode( $shortcode ); ?>
           </div>
         <?php endif; ?>

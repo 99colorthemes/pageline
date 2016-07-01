@@ -195,11 +195,6 @@ p.site-description {
     outline: none;
 }
 
-/*.menu .page_item a.mPS2id-highlight,
-.nnc-sticky .menu .page_item a,
-.menu .page_item a {
-	color: #ff4a1c;
-}*/
 a._mPS2id-h.mPS2id-highlight.mPS2id-highlight-first.mPS2id-highlight-last {
     color: red;
 }
