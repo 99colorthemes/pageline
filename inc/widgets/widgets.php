@@ -1408,7 +1408,7 @@ class pageline_contact_widget extends WP_Widget {
           <?php endif; ?>
         </div>
         <?php if ( !empty( $shortcode ) ) : ?>
-          <div class="nnc-contact-filds">
+          <div class="nnc-contact-fields">
             <?php echo do_shortcode( $shortcode ); ?>
           </div>
         <?php endif; ?>

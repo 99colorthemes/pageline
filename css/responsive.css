@@ -29,7 +29,11 @@
 
 }
 
-@media (max-width: 1200px) { 
+@media (max-width: 1200px) {  
+
+	.nnc-container {
+		width: 970px; 
+	}
 
 	.owl-prev { 
 	    bottom: 240px;

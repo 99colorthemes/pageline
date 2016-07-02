@@ -698,12 +698,7 @@ a._mPS2id-h.mPS2id-highlight.mPS2id-highlight-first.mPS2id-highlight-last {
 .owl-carousel {
 	height: 100vh;
 	overflow: hidden;
-}
-
-/*.owl-carousel .owl-item {
-	height: 100vh;
-}*/
-
+}  
 
 
 /*=====  End of Banner-Slider  ======
@@ -966,8 +961,7 @@ a._mPS2id-h.mPS2id-highlight.mPS2id-highlight-first.mPS2id-highlight-last {
 }
 
 .nnc-about-img {
-	max-width: 585px;
-	max-height: 345px;
+	max-width: 50%; 
 	overflow: hidden;
 	float: left;
 	line-height: 0;
@@ -978,7 +972,7 @@ a._mPS2id-h.mPS2id-highlight.mPS2id-highlight-first.mPS2id-highlight-last {
 }
 
 .nnc-about-desc {
-	max-width: 585px;
+	max-width: 50%;
 	float: right;
 	padding-left: 30px;
 }
@@ -3738,6 +3732,111 @@ address {
 
 
 /*=====  End of Comment section Css  ======*/
+
+/*==================================
+=           Contact US            =
+==================================*/
+.nnc-contact-info {
+	padding: 10px 0 40px;
+}
+
+.nnc-contact-info:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.nnc-col-one-third {
+	float: left;
+	width: 33.33%;
+	text-align: center;
+}
+
+.nnc-col-one-third i {
+	font-size: 48px;
+	color: #ff4a1c;
+}
+
+.nnc-col-one-third span {
+	display: block;
+	padding-top: 20px;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	color: #888;
+} 
+
+form.wpcf7-form:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+form.wpcf7-form p {
+	float: left;
+	width: 32%;
+	margin-right: 23px;
+	display: block; 
+	font-family: 'Roboto', sans-serif;
+	font-style: 14px; 
+} 
+
+form.wpcf7-form p:nth-child(4) {
+	margin-right: 0;
+}
+
+form.wpcf7-form p:nth-child(6) {
+	width: 100%;
+	text-align: center;
+}
+
+span.wpcf7-form-control-wrap input {
+	border-radius: 0;
+	margin-top: 14px;
+	padding: 6px;
+	width: 100%;
+}
+
+span.wpcf7-form-control-wrap textarea {
+	border-radius: 0;
+	margin-top: 14px;
+	padding: 6px;
+	width: 100%;
+}
+
+form.wpcf7-form p:nth-child(5) {
+	width: 100%;
+	padding-top: 14px;
+}
+
+div.wpcf7-validation-errors {
+    border: 2px solid #f7e700;
+    padding: 12px;
+    display: inline-block!important;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    width: 100%;
+}
+
+span.wpcf7-not-valid-tip {
+	padding-top: 16px;
+}
+
+input.wpcf7-form-control.wpcf7-submit {
+    background: #ff4a1c;
+    box-shadow: none;
+    text-shadow: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 0;
+    border: 0;
+    display: inline-block;
+    margin-top: 14px;
+    padding: 14px 50px!important;
+}
+
+
+/*=====  End ofContact US  ======*/
 
 
 
