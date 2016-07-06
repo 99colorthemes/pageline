@@ -41,7 +41,15 @@
 
 	.owl-next { 
 	    bottom: 240px;
-	} 
+	}  
+
+	form.wpcf7-form p:nth-child(2) {
+		margin-right: 14px;
+	}
+
+	form.wpcf7-form p:nth-child(3) {
+		margin-right: 14px;
+	}
 
 } 
 

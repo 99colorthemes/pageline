@@ -41,7 +41,7 @@ jQuery(window).scroll(function() {
     }
 }); 
 // ScrollSpeed
-jQuery.scrollSpeed(80, 800);
+jQuery.scrollSpeed(120, 800);
 
 //************************ owl slider ***********************************//
 jQuery(document).ready(function() {
