@@ -155,8 +155,8 @@ function pageline_navigation() {
       if ( $wp_query->max_num_pages > 1 ) :
       ?>
       <ul class="default-wp-page clearfix">
-        <li class="previous"><?php next_posts_link( esc_html__( '&larr; Previous', 'pageline' ) ); ?></li>
-        <li class="next"><?php previous_posts_link( esc_html__( 'Next &rarr;', 'pageline' ) ); ?></li>
+        <li class="previous"><?php previous_posts_link( esc_html__( '&larr; Previous', 'pageline' ) ); ?></li>
+        <li class="next"><?php next_posts_link( esc_html__( 'Next &rarr;', 'pageline' ) ); ?></li>
       </ul>
       <?php
       endif;
