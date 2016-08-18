@@ -156,7 +156,7 @@ class Pageline_AboutUs_Widget extends WP_Widget {
       <?php if ( !empty( $widget_title ) || !empty( $text ) ) : ?>
         <div class="nnc-title">
           <?php if ( !empty( $widget_title ) ) {
-            echo '<h2>'.esc_attr( $widget_title ).'</h2>';
+            echo '<h2>'.esc_attr( $widget_title ).'<span></span></h2>';
           }
           if ( !empty( $widget_text ) ) {
             echo wpautop( esc_textarea( $widget_text ) );
@@ -329,7 +329,7 @@ class Pageline_Services_Widget extends WP_Widget {
         <?php if ( !empty( $widget_title ) || !empty( $widget_text ) ) : ?>
         <div class="nnc-title">
           <?php if ( !empty( $widget_title ) ) {
-            echo '<h2>'.esc_html( $widget_title ).'</h2>';
+            echo '<h2>'.esc_html( $widget_title ).'<span></span></h2>';
           }
           ?>
           <?php if ( !empty( $widget_text ) ) {
@@ -338,7 +338,7 @@ class Pageline_Services_Widget extends WP_Widget {
         </div>
       <?php endif; ?>
 
-      <?php if ( !empty( $page_array ) ) : $key=0;?>
+      <?php if ( !empty( $pages ) ) : $key=0;?>
         <div class="nnc-service-box">
           <?php while ( $get_pages->have_posts() ) : $get_pages->the_post(); ?>
             <div class="nnc-service">
@@ -511,7 +511,7 @@ class Pageline_Project_Widget extends WP_Widget {
         <?php if ( !empty( $widget_title ) || !empty( $widget_text ) ) : ?>
         <div class="nnc-title">
           <?php if ( !empty( $widget_title ) ) {
-            echo '<h2>'.esc_attr( $widget_title ).'</h2>';
+            echo '<h2>'.esc_attr( $widget_title ).'<span></span></h2>';
           }
           ?>
           <?php if ( !empty( $widget_text ) ) {
@@ -692,7 +692,7 @@ class Pageline_Funs_Widget extends WP_Widget {
         <?php if ( !empty( $widget_title ) || !empty( $text ) ) : ?>
         <div class="nnc-title">
           <?php if ( !empty( $widget_title ) ) {
-            echo '<h2>'.esc_html( $widget_title ).'</h2>';
+            echo '<h2>'.esc_html( $widget_title ).'<span></span></h2>';
           }
           ?>
           <?php if ( !empty( $widget_text ) ) {
@@ -853,7 +853,7 @@ class Pageline_CTA_Widget extends WP_Widget {
         <?php if ( !empty( $widget_title ) || !empty( $widget_text ) ) : ?>
         <div class="nnc-cta-block">
           <?php if ( !empty( $widget_title ) ) {
-            echo '<h2>'.esc_html( $widget_title ).'</h2>';
+            echo '<h2>'.esc_html( $widget_title ).'<span></span></h2>';
           }
           ?>
           <?php if ( !empty( $widget_text ) ) {
@@ -863,9 +863,9 @@ class Pageline_CTA_Widget extends WP_Widget {
         </div>
       <?php endif; ?>
 
-      <?php if( !empty( $btn_text ) ) : ?>
+      <?php if( !empty( $button_text ) ) : ?>
           <div class="nnc-dtl">
-            <a href="<?php echo esc_url( $button_url ); ?>"><?php echo esc_html( $btn_text ); ?></a>
+            <a href="<?php echo esc_url( $button_url ); ?>"><?php echo esc_html( $button_text ); ?></a>
           </div>
       <?php endif; ?>
       </div>
@@ -982,8 +982,27 @@ class Pageline_blogs_Widget extends WP_Widget {
     $number = empty( $instance['number'] ) ? 3 : $instance['number'];
     $type = isset( $instance['type'] ) ? $instance['type'] : 'latest' ;
     $category = isset( $instance['category'] ) ? $instance['category'] : '';
-    $btn_txt = isset( $instance['btn-txt'] ) ? $instance['btn-txt'] : '';
-    $btn_url = isset( $instance['btn-url'] ) ? $instance['btn-url'] : '';
+    $btn_txt = isset( $instance['btn_txt'] ) ? $instance['btn_txt'] : '';
+    $btn_url = isset( $instance['btn_url'] ) ? $instance['btn_url'] : '';
+    if( $type == 'latest' ) {
+      $get_featured_posts = new WP_Query(
+        array(
+          'posts_per_page'        => $number,
+          'post_type'             => 'post',
+          'ignore_sticky_posts'   => true,
+          'no_found_rows'         => true
+        )
+      );
+    } else {
+      $get_featured_posts = new WP_Query(
+        array(
+          'posts_per_page'        => $number,
+          'post_type'             => 'post',
+          'category__in'          => $category,
+          'no_found_rows'         => true
+        )
+      );
+    }
 
     echo $before_widget; ?>
 
@@ -993,7 +1012,7 @@ class Pageline_blogs_Widget extends WP_Widget {
         <?php if ( !empty( $widget_title ) || !empty( $widget_text ) ) : ?>
         <div class="nnc-title">
           <?php if ( !empty( $widget_title ) ) {
-            echo '<h2>'.esc_attr( $widget_title ).'</h2>';
+            echo '<h2>'.esc_attr( $widget_title ).'<span></span></h2>';
           }
           ?>
           <?php if ( !empty( $widget_text ) ) {
@@ -1098,7 +1117,7 @@ class Pageline_blogs_Widget extends WP_Widget {
     <p><label for="<?php echo $this->get_field_id('text'); ?>"><?php esc_html_e( 'Content:', 'pageline' ); ?></label>
     <textarea class="widefat" rows="10" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo esc_textarea( $text ); ?></textarea></p>
 
-    <p><label for="<?php echo $this->get_field_id('number'); ?>"><?php esc_html_e( 'Section ID:', 'pageline' ); ?></label>
+    <p><label for="<?php echo $this->get_field_id('number'); ?>"><?php esc_html_e( 'Number of posts to display:', 'pageline' ); ?></label>
     <input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" min="1" step="1" value="<?php echo absint($number); ?>" /></p>
 
     <p><input type="radio" <?php checked( $type, 'latest' ) ?> id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>" value="latest"/><?php esc_html_e( 'Show latest Posts', 'pageline' );?><br />
@@ -1191,7 +1210,7 @@ class Pageline_Contact_Widget extends WP_Widget {
       <?php if ( !empty( $widget_title ) || !empty( $widget_text ) ) : ?>
         <div class="nnc-title">
           <?php if ( !empty( $widget_title ) ) {
-            echo '<h2>'.esc_html( $widget_title ).'</h2>';
+            echo '<h2>'.esc_html( $widget_title ).'<span></span></h2>';
           }
           ?>
           <?php if ( !empty( $widget_text ) ) {
@@ -1394,13 +1413,13 @@ class Pageline_Testimonials_Widget extends WP_Widget {
     $name = array();
     $tagby = array();
     $image = array();
-    for ($i=0; $i < 3; $i++) { 
+    for ($i=0; $i<3; $i++) { 
       $desc[] = isset( $instance['desc_'.$i] ) ? $instance['desc_'.$i] : '';
       $name[] = isset( $instance['name_'.$i] ) ? $instance['name_'.$i] : '';
       $tagby[] = isset( $instance['tagby_'.$i] ) ? $instance['tagby_'.$i] : '';
       $image[] = isset( $instance['image_'.$i] ) ? $instance['image_'.$i] : '';
     }
-
+    
     echo $before_widget; ?>
     <!-- Testimonials-start --> 
     <div id="<?php echo esc_attr( $menu_id ); ?>" class="nnc-testimonials">
@@ -1408,7 +1427,7 @@ class Pageline_Testimonials_Widget extends WP_Widget {
         <?php if ( !empty( $widget_title ) || !empty( $widget_text ) ) : ?>
         <div class="nnc-title">
           <?php if ( !empty( $widget_title ) ) {
-            echo '<h2>'.esc_attr( $widget_title ).'</h2>';
+            echo '<h2>'.esc_attr( $widget_title ).'<span></span></h2>';
           }
           ?>
           <?php if ( !empty( $widget_text ) ) {
@@ -1486,7 +1505,7 @@ class Pageline_Testimonials_Widget extends WP_Widget {
     $defaults['menu_id'] = '';
     $defaults['title'] = '';
     $defaults['text'] = '';
-    for ($i=0; $i < 3; $i++) { 
+    for ($i=0; $i<3; $i++) { 
       $defaults['desc_'.$i] = '';
       $defaults['name_'.$i] = '';
       $defaults['tagby_'.$i] = '';
@@ -1508,7 +1527,7 @@ class Pageline_Testimonials_Widget extends WP_Widget {
     <p><label for="<?php echo $this->get_field_id('text'); ?>"><?php esc_html_e( 'Description:', 'pageline' ); ?></label>
     <textarea class="widefat" rows="10" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo esc_textarea( $text ); ?></textarea></p>
 
-    <?php for ($i=0; $i < 3; $i++) :?>
+    <?php for ($i=0; $i<3; $i++) :?>
 
       <p><label for="<?php echo $this->get_field_id('name_'.$i); ?>"><?php esc_html_e( 'Name:', 'pageline' ); ?></label>
       <input id="<?php echo $this->get_field_id('name_'.$i); ?>" class="widefat" name="<?php echo $this->get_field_name('name_'.$i); ?>" type="text" value="<?php echo esc_attr( $instance['name_'.$i] ); ?>" /></p>
@@ -1535,6 +1554,3 @@ class Pageline_Testimonials_Widget extends WP_Widget {
     endfor;
   }
 }
-
-
-
