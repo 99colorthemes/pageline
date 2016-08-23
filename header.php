@@ -43,8 +43,11 @@
 					</div><!-- .header-logo -->
 
 					<?php $screen_reader = 'normal-header';
-					if ( get_theme_mod( 'display_header_text', '1' ) == '1') {
+					if ( ( get_theme_mod( 'pageline_header_logo_placement', 'header_text_only' ) == 'header_logo_only' || get_theme_mod( 'pageline_header_logo_placement', 'header_text_only' ) == 'disable' ) ) {
 						$screen_reader = 'screen-reader-text';
+					}
+					if ( get_theme_mod( 'pageline_header_logo_placement', 'header_text_only' ) == 'show_both' ) {					
+						$screen_reader = 'nnc-seperate';
 					} ?>
 
 					<div id="header-text" class="<?php echo esc_attr( $screen_reader ); ?>">

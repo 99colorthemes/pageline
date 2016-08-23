@@ -437,7 +437,7 @@ class Pageline_Services_Widget extends WP_Widget {
         wp_dropdown_pages( $arg ); ?></p>
 
       <p><label for="<?php echo $this->get_field_id('font_icon_'.$i); ?>"><?php esc_html_e( 'Icon Class:', 'pageline' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id('font_icon_'.$i); ?>" name="<?php echo $this->get_field_name('font_icon_'.$i); ?>" type="text" value="<?php echo esc_attr($instance['font_icon_'.$i]); ?>" /></p>
+      <input class="widefat" id="<?php echo $this->get_field_id('font_icon_'.$i); ?>" name="<?php echo $this->get_field_name('font_icon_'.$i); ?>" type="text" value="<?php echo esc_attr($instance['font_icon_'.$i]); ?>" placeholder="fa-coffee"/></p>
 
       <hr/>
     <?php endfor;
@@ -785,7 +785,7 @@ class Pageline_Funs_Widget extends WP_Widget {
       <input class="widefat" id="<?php echo $this->get_field_id('funs_text_'.$i); ?>" name="<?php echo $this->get_field_name('funs_text_'.$i); ?>" type="text" value="<?php echo esc_attr($instance['funs_text_'.$i]); ?>" /></p>
 
       <p><label for="<?php echo $this->get_field_id('funs_font_icon_'.$i); ?>"><?php esc_html_e( 'Funs Font Icon:', 'pageline' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id('funs_font_icon_'.$i); ?>" name="<?php echo $this->get_field_name('funs_font_icon_'.$i); ?>" type="text" value="<?php echo esc_attr($instance['funs_font_icon_'.$i]); ?>" /></p>
+      <input class="widefat" id="<?php echo $this->get_field_id('funs_font_icon_'.$i); ?>" name="<?php echo $this->get_field_name('funs_font_icon_'.$i); ?>" type="text" value="<?php echo esc_attr($instance['funs_font_icon_'.$i]); ?>" placeholder="fa-coffee"/></p>
       <hr/>
     <?php endfor; ?>
 
@@ -1419,7 +1419,7 @@ class Pageline_Testimonials_Widget extends WP_Widget {
       $tagby[] = isset( $instance['tagby_'.$i] ) ? $instance['tagby_'.$i] : '';
       $image[] = isset( $instance['image_'.$i] ) ? $instance['image_'.$i] : '';
     }
-    
+
     echo $before_widget; ?>
     <!-- Testimonials-start --> 
     <div id="<?php echo esc_attr( $menu_id ); ?>" class="nnc-testimonials">
